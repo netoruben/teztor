@@ -1,0 +1,25 @@
+@import '../variables';
+
+.textarea {
+    background: @primary-color;
+    border-radius: 3px;
+    border: 0;
+    padding: 0.2em;
+    display: block;
+    color: @white-color;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+}
+
+.textarea:focus-visible {
+    outline: 0;
+    border: 2px solid @white-color;
+    height: calc(100% - 25px - 30px - 4px - 0.9em);
+}
+
+.textarea-max {
+    width: -webkit-fill-available;
+    height: calc(100% - 25px - 30px - 0.9em);
+    resize: none;
+    margin-bottom: 0.5em;
+}

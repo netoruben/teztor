@@ -1,0 +1,59 @@
+@import '../variables';
+
+.nav-button, .button-background {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: @font-thin;
+    letter-spacing: 0.05em;
+}
+
+.dropdown-main {
+    padding-right: 0.5em;
+    svg {
+        width: 20px;
+    }
+}
+
+.button-background {
+    background: @primary-color;
+    border-radius: 3px;
+    padding: 1em;
+    text-transform: none;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+
+.nav-button:hover, .dropdown-main-hover, .button-background:hover {
+    background: darken(@white-color, 90%)
+}
+
+.nav-button-close:hover, .button-background-close:hover {
+    background: @red-color;
+}
+
+.dropdown-item {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    max-height: unset;
+    font-size: 0.9em;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.5em;
+    }
+}
+
+.dropdown-item-first {
+    margin-top: 0;
+}
+
+.dropdown-item:hover {
+    background: @secondary-color;
+}

@@ -1,0 +1,32 @@
+@import '../variables';
+
+.nav-title {
+    cursor: default;
+    user-select: none;
+    flex-grow: 1;
+    -webkit-app-region: drag;
+}
+
+.drag-disabled {
+    -webkit-app-region: no-drag;
+}
+
+.nav-title-left {
+    padding-left: 0.5em;
+    font-size: 0.8em;
+    font-weight: @font-thin;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: inline-flex;
+    justify-content: start;
+    align-items: center;
+    svg {
+        width: 15px;
+        height: 15px;
+        margin-right: 0.2em;
+    }
+}
+
+.nav-buttons {
+    height: 100%;
+}

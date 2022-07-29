@@ -1,0 +1,11 @@
+{
+  "name": "TezTor",
+  "version": "1.0.0",
+  "main": "./app/views/main.html",
+  "license": "MIT",
+  "window": {
+    "title": "TezTor",
+    "frame": false,
+    "toolbar": false
+  }
+}
