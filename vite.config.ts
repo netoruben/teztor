@@ -13,7 +13,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './app/views/main.html',
-        openMagnet: './app/views/openMagnet.html'
+        openMagnet: './app/views/openMagnet.html',
+        openTorrent: './app/views/openTorrent.html'
       }
     }
   }

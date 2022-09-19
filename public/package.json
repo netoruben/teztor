@@ -1,6 +1,8 @@
 {
   "name": "TezTor",
   "version": "1.0.0",
+  "node-main": "./server.js",
+  "node-remote": "http://localhost:3000",
   "main": "./app/views/main.html",
   "license": "MIT",
   "window": {

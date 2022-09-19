@@ -209,8 +209,51 @@
 // }
 
 declare namespace nw {
+    namespace App {
+        const argv: string
+        const ullArgv: string
+        const filteredArgv: string
+        const startPath: string
+        const dataPath: string
+        const manifest: JSON
+        function clearCache(): void
+        function clearAppCache(manifest_url: string): void
+        function closeAllWindows(): void
+        function crashBrowser(): void
+        function crashRenderer(): void
+    }
+
     namespace Window {
+        interface Cookie {
+            domain?: string,
+            expirationDate?: number,
+            hostOnly?: boolean,
+            httpOnly?: boolean,
+            name?: string,
+            path?: string,
+            secure?: boolean,
+            session?: boolean,
+            storeId?: string,
+            url: string,
+            value?: string
+        }
+
+        interface CookieDetails {
+            name: string,
+            storeId?: string,
+            url: string
+        }
+
+        interface Cookies {
+            set(details: Cookie, callback?: (cookie?: Cookie) => void): void,
+            get(details: CookieDetails, callback?: (cookie?: Cookie) => void): void,
+            remove(details: CookieDetails, callback?: (details?: CookieDetails) => void): void
+        }
+
         interface Window {
+            cWindow: {
+                id: number
+            },
             x: number,
             y: number,
             width: number,
@@ -265,8 +308,9 @@ declare namespace nw {
             setProgressBar(progress: number): void,
             setBadgeLabel(label: string): void,
             eval(frame: HTMLIFrameElement, script: string): void,
-            on(event: string, listener: Function): void
-            once(event: string, listener: Function): void
+            on(event: string, listener: Function): void,
+            once(event: string, listener: Function): void,
+            cookies: Cookies
         }
 
         interface WindowManifestOptions {

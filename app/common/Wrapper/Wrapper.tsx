@@ -10,7 +10,7 @@ const Wrapper: ParentComponent<Props> = (props) => {
     const { type } = props
 
     return (
-        <div ref={props.ref} class={type}> {props.children} </div>
+        <div ref={props.ref} class={type}>{props.children}</div>
     )
 }
 

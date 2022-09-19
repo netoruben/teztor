@@ -1,5 +1,5 @@
 import { Component } from 'solid-js'
-import { getTorrentInfo, windowClose } from '../../../common/Button/ButtonActions'
+import { getTorrentMetadata, windowClose } from '../../../common/Button/ButtonActions'
 
 import Button from '../../../common/Button/Button'
 import Wrapper from '../../../common/Wrapper/Wrapper'
@@ -13,7 +13,7 @@ const OpenMagnetFooter: Component<Props> = (props) => {
 
     return (
         <Wrapper type='flex-inline-wrapper'>
-            <Button type='button-background' action={() => getTorrentInfo(links)}>
+            <Button type='button-background' action={() => getTorrentMetadata(links)}>
                 Download
             </Button>
             <Button type='button-background' action={windowClose}>

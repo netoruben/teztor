@@ -1,7 +1,7 @@
-import { Component } from 'solid-js'
+import { Component, createEffect, onMount } from 'solid-js'
 import useToggleBoolean from '../../hooks/useToggleBoolean'
 import { closeSVG, magnetSVG, maximizeSVG, minimizeSVG, openSVG, restoreSVG, torrentSVG } from '../../common/Button/ButtonSVG'
-import { windowClose, windowCreate, windowMaximize, windowMinimize, windowRestore } from '../../common/Button/ButtonActions'
+import { getTorrent, getTorrentFile, windowClose, windowCreate, windowMaximize, windowMinimize, windowRestore } from '../../common/Button/ButtonActions'
 
 import Button from '../../common/Button/Button'
 import NavBar from '../../common/NavBar/NavBar'
@@ -9,10 +9,24 @@ import NavBarTitle from '../../common/NavBar/NavBarTitle'
 import Dropdown from '../../common/Dropdown/Dropdown'
 import DropdownItem from '../../common/Dropdown/DropdownItem'
 import Wrapper from '../../common/Wrapper/Wrapper'
+import Input from '../../common/Input/Input'
+import DropdownLabelItem from '../../common/Dropdown/DropdownLabelItem'
 
 const MainNavBar: Component = () => {
     const { status: maximized, toggleStatus: toggleMaximize } = useToggleBoolean()
     let draggable: HTMLHeadingElement
+
+    onMount(() => {
+        window.localStorage.clear()
+        window.onstorage = async (event: StorageEvent) => {
+            if (event.key === 'torrentMetadata') {
+                const torrentMetadata: [] = JSON.parse(window.localStorage.getItem('torrentMetadata'))
+                for(let i = 0; i < torrentMetadata.length; i++) {
+                    windowCreate('openTorrent', 'Torrent Status', () => draggable, i)
+                }
+            }
+        }
+    })
 
     const MaximizeOrUnmaximize = () => {
         switch(maximized()) {
@@ -28,10 +42,11 @@ const MainNavBar: Component = () => {
     return (
         <NavBar>
             <Dropdown type='dropdown-wrapper dropdown-wrapper-first' svg={openSVG} name='Open'>
-                <DropdownItem type='dropdown-item dropdown-item-first' action={() => {}}>
+                <DropdownLabelItem type='dropdown-item dropdown-item-first' inputID='torrentFile'>
                     {torrentSVG}
                     Torrent File
-                </DropdownItem>
+                </DropdownLabelItem>
+                <Input id='torrentFile' inputType='file' type='input-disabled' action={getTorrentFile} draggable={() => draggable} multiple/>
                 <DropdownItem type='dropdown-item' action={() => windowCreate('openMagnet', 'Download From Torrent Links', () => draggable)}>
                     {magnetSVG}
                     Torrent Link

@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <script>
+      const exec = require('child_process').exec
+      exec(`${nw.App.startPath}\\public\\aria2c.exe --enable-rpc --rpc-listen-all=true --rpc-allow-origin-all`)
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
